@@ -1,0 +1,101 @@
+
+/* Reset básico para remover margens padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Estrutura principal com Flexbox para o rodapé ficar sempre no final */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f4; /* Cor de fundo cinza bem claro */
+}
+
+/* Estilo do Cabeçalho */
+header {
+    background-color: #8c4c2a; /* Tom de marrom/cobre */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+header .logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* Estilo da área central */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+h1 {
+    font-size: 1.2rem;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* Estilo do Card contendo a imagem e o texto */
+.card {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    overflow: hidden;
+    width: 250px; 
+    text-align: left;
+    position: relative;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-text {
+    padding: 15px;
+    font-size: 0.85rem;
+    position: relative;
+}
+
+/* Efeito de revelar a verdade ao passar o mouse */
+.verdade {
+    display: none; /* Escondido por padrão */
+    color: red;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.card:hover .verdade {
+    display: block; /* Aparece quando passa o mouse no card */
+}
+
+.card:hover p:first-child {
+    text-decoration: line-through; /* Risca a mentira ao passar o mouse */
+    color: gray;
+}
+
+/* Estilo do Rodapé */
+footer {
+    background-color: #8c4c2a; /* Mesmo tom de marrom do cabeçalho */
+    color: white;
+    padding: 10px 30px;
+    font-size: 0.8rem;
+}
