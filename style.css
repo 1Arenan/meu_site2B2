@@ -1,5 +1,5 @@
-
-/* Reset básico para remover margens padrão */
+#### 🎨 `estilos.css`
+```css
 * {
     margin: 0;
     padding: 0;
@@ -7,36 +7,35 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
-/* Estrutura principal com Flexbox para o rodapé ficar sempre no final */
 body {
+    background-color: #ececec;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f4f4f4; /* Cor de fundo cinza bem claro */
 }
 
-/* Estilo do Cabeçalho */
+/* Cabeçalho */
 header {
-    background-color: #8c4c2a; /* Tom de marrom/cobre */
+    background-color: #6d3b1e; /* Tom exato do marrom da imagem */
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    padding: 12px 24px;
 }
 
 header .logo {
-    font-size: 1.2rem;
+    font-size: 18px;
     font-weight: bold;
 }
 
 header nav a {
     color: white;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 14px;
 }
 
-/* Estilo da área central */
+/* Conteúdo central */
 main {
     flex: 1;
     display: flex;
@@ -46,56 +45,54 @@ main {
 }
 
 h1 {
-    font-size: 1.2rem;
-    color: #000;
+    font-size: 20px;
     margin-bottom: 20px;
+    font-weight: bold;
+    color: #000;
 }
 
-/* Estilo do Card contendo a imagem e o texto */
+/* Card */
 .card {
-    background-color: white;
-    border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    background-color: #ffffff;
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     overflow: hidden;
-    width: 250px; 
-    text-align: left;
-    position: relative;
     cursor: pointer;
 }
 
 .card img {
     width: 100%;
-    height: auto;
+    height: 300px;
+    object-fit: cover;
     display: block;
 }
 
 .card-text {
-    padding: 15px;
-    font-size: 0.85rem;
-    position: relative;
+    padding: 12px;
+    font-size: 13px;
+    color: #333;
 }
 
-/* Efeito de revelar a verdade ao passar o mouse */
+/* Efeito do mouse (Hover) */
 .verdade {
-    display: none; /* Escondido por padrão */
-    color: red;
+    display: none;
+    color: #d9534f;
     font-weight: bold;
-    margin-top: 5px;
+}
+
+.card:hover .mentira {
+    display: none;
 }
 
 .card:hover .verdade {
-    display: block; /* Aparece quando passa o mouse no card */
+    display: block;
 }
 
-.card:hover p:first-child {
-    text-decoration: line-through; /* Risca a mentira ao passar o mouse */
-    color: gray;
-}
-
-/* Estilo do Rodapé */
+/* Rodapé */
 footer {
-    background-color: #8c4c2a; /* Mesmo tom de marrom do cabeçalho */
+    background-color: #6d3b1e;
     color: white;
-    padding: 10px 30px;
-    font-size: 0.8rem;
+    padding: 12px 24px;
+    font-size: 13px;
 }
