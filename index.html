@@ -43,8 +43,8 @@
 
     <style>
         body {
-            background-color: #0f172a;
-            color: #f8fafc;
+            background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 50%, #e0f2fe 100%);
+            color: #1e293b;
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -81,11 +81,11 @@
             transform: rotateY(180deg);
         }
 
-        /* Custom Snowfall animation */
+        /* Light Snowfall animation */
         .snowflake {
             position: fixed;
             top: -10px;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(56, 189, 248, 0.45);
             font-size: 1em;
             pointer-events: none;
             z-index: 0;
@@ -109,22 +109,21 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans selection:bg-sky-500 selection:text-white flex flex-col min-h-screen">
+<body class="font-sans selection:bg-sky-400 selection:text-white flex flex-col min-h-screen">
 
     <!-- Snowfall container -->
     <div id="snowflake-container"></div>
 
-    <!-- Header section -->
     <header class="relative z-10 pt-8 pb-4 px-4 text-center">
         <div class="max-w-4xl mx-auto flex flex-col items-center justify-center">
             
             <!-- Animated SVG Penguin Icon -->
-            <div class="w-20 h-20 mb-3 bg-sky-500/10 rounded-full p-2 border-2 border-sky-400/30 shadow-lg shadow-sky-500/20 animate-waddle cursor-pointer" onclick="playPenguinSound()">
-                <svg viewBox="0 0 100 100" class="w-full h-full text-sky-400">
+            <div class="w-20 h-20 mb-3 bg-white/80 rounded-full p-2 border-2 border-sky-300 shadow-md shadow-sky-200 animate-waddle cursor-pointer" onclick="playPenguinSound()">
+                <svg viewBox="0 0 100 100" class="w-full h-full">
                     <!-- Penguin body -->
-                    <ellipse cx="50" cy="55" rx="30" ry="35" fill="#1e293b"/>
+                    <ellipse cx="50" cy="55" rx="30" ry="35" fill="#0f172a"/>
                     <!-- Belly -->
-                    <ellipse cx="50" cy="58" rx="20" ry="26" fill="#f8fafc"/>
+                    <ellipse cx="50" cy="58" rx="20" ry="26" fill="#ffffff"/>
                     <!-- Eyes -->
                     <circle cx="42" cy="38" r="4" fill="#ffffff"/>
                     <circle cx="42" cy="38" r="2" fill="#0284c7"/>
@@ -141,34 +140,31 @@
                 </svg>
             </div>
 
-            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-sky-300 via-sky-100 to-indigo-300 bg-clip-text text-transparent mb-2">
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-sky-700 via-blue-800 to-indigo-900 bg-clip-text text-transparent mb-2">
                 Pinguim Flashcards 🐧
             </h1>
-            <p class="text-sky-200/80 text-sm sm:text-base max-w-xl">
-                Descubra o mundo dos pinguins! Clique em <strong class="text-emerald-400">Verdadeiro</strong> ou <strong class="text-rose-400">Falso</strong> em cada cartão para testar seu conhecimento.
+            <p class="text-slate-600 text-sm sm:text-base max-w-xl font-medium">
+                Descubra curiosidades incríveis sobre os pinguins! Clique em qualquer cartão para ver a resposta.
             </p>
 
             <!-- Score and Progress Bar -->
-            <div class="w-full max-w-xl bg-slate-900/80 backdrop-blur border border-slate-800 rounded-2xl p-4 mt-6 shadow-xl">
+            <div class="w-full max-w-xl bg-white/90 backdrop-blur border border-sky-200 rounded-2xl p-4 mt-6 shadow-md">
                 <div class="flex justify-between items-center text-xs sm:text-sm font-semibold mb-2">
-                    <span class="text-slate-400">Progresso dos Desafios: <span id="progress-text" class="text-sky-400">0 / 8</span></span>
-                    <div class="flex space-x-4">
-                        <span class="text-emerald-400"><i class="fa-solid fa-circle-check mr-1"></i> Acertos: <span id="score-correct">0</span></span>
-                        <span class="text-rose-400"><i class="fa-solid fa-circle-xmark mr-1"></i> Erros: <span id="score-wrong">0</span></span>
-                    </div>
+                    <span class="text-slate-600">Cartões Explorados:</span>
+                    <span id="progress-text" class="text-sky-700 font-bold">0 / 8</span>
                 </div>
                 <!-- Progress Bar track -->
-                <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden p-0.5 border border-slate-700">
-                    <div id="progress-bar" class="bg-gradient-to-r from-sky-500 to-indigo-500 h-full rounded-full w-0 transition-all duration-500"></div>
+                <div class="w-full bg-sky-100 rounded-full h-3 overflow-hidden p-0.5 border border-sky-200">
+                    <div id="progress-bar" class="bg-gradient-to-r from-sky-400 to-blue-600 h-full rounded-full w-0 transition-all duration-500"></div>
                 </div>
             </div>
 
             <!-- Controls bar -->
             <div class="flex items-center gap-3 mt-4">
-                <button onclick="resetAllCards()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-sky-300 text-xs sm:text-sm font-semibold rounded-xl border border-sky-500/20 shadow transition active:scale-95 flex items-center gap-2">
-                    <i class="fa-solid fa-rotate-right"></i> Reiniciar Tudo
+                <button onclick="resetAllCards()" class="px-4 py-2 bg-white hover:bg-sky-50 text-sky-700 text-xs sm:text-sm font-semibold rounded-xl border border-sky-300 shadow-sm transition active:scale-95 flex items-center gap-2">
+                    <i class="fa-solid fa-rotate-right"></i> Reiniciar Cartões
                 </button>
-                <button onclick="toggleAudio()" id="audio-btn" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs sm:text-sm font-semibold rounded-xl border border-slate-700 shadow transition active:scale-95 flex items-center gap-2">
+                <button onclick="toggleAudio()" id="audio-btn" class="px-4 py-2 bg-white hover:bg-sky-50 text-slate-700 text-xs sm:text-sm font-semibold rounded-xl border border-sky-200 shadow-sm transition active:scale-95 flex items-center gap-2">
                     <i class="fa-solid fa-volume-high" id="audio-icon"></i> Som: On
                 </button>
             </div>
@@ -183,7 +179,7 @@
         </div>
     </main>
 
-    <footer class="relative z-10 border-t border-slate-800/80 bg-slate-950/60 backdrop-blur py-4 text-center text-xs text-slate-500">
+    <footer class="relative z-10 border-t border-sky-200 bg-white/60 backdrop-blur py-4 text-center text-xs text-slate-500">
         <p>Desenvolvido com <i class="fa-solid fa-heart text-rose-500"></i> para os amantes da vida marinha. 🐧❄️</p>
     </footer>
 
@@ -203,23 +199,14 @@
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
 
-                if (type === 'correct') {
+                if (type === 'flip') {
                     osc.type = 'sine';
-                    osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
-                    osc.frequency.exponentialRampToValueAtTime(659.25, audioCtx.currentTime + 0.15); // E5
-                    osc.frequency.exponentialRampToValueAtTime(783.99, audioCtx.currentTime + 0.3); // G5
-                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+                    osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(700, audioCtx.currentTime + 0.12);
+                    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
                     osc.start();
-                    osc.stop(audioCtx.currentTime + 0.35);
-                } else if (type === 'wrong') {
-                    osc.type = 'sawtooth';
-                    osc.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
-                    osc.frequency.exponentialRampToValueAtTime(164.81, audioCtx.currentTime + 0.25); // E3
-                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.3);
+                    osc.stop(audioCtx.currentTime + 0.15);
                 } else if (type === 'squeak') {
                     osc.type = 'sine';
                     osc.frequency.setValueAtTime(800, audioCtx.currentTime);
@@ -230,7 +217,7 @@
                     osc.stop(audioCtx.currentTime + 0.15);
                 }
             } catch (e) {
-                console.log("Audio not allowed yet");
+                console.log("Audio not enabled yet");
             }
         }
 
@@ -312,7 +299,7 @@
         ];
 
         // Track state of cards
-        let userAnswers = {}; // id: { answered: boolean, userChoice: boolean, isCorrect: boolean }
+        let userAnswers = {}; // id: { answered: boolean }
 
         function renderCards() {
             const grid = document.getElementById('flashcards-grid');
@@ -322,86 +309,74 @@
                 const answerState = userAnswers[card.id];
                 const isFlipped = answerState && answerState.answered;
 
-                let feedbackBadgeHTML = '';
+                let badgeHTML = '';
                 let resultMessageHTML = '';
 
-                if (isFlipped) {
-                    if (answerState.isCorrect) {
-                        feedbackBadgeHTML = `
-                            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs font-bold mb-2">
-                                <i class="fa-solid fa-circle-check"></i> Você Acertou! (Tá certa)
-                            </div>`;
-                    } else {
-                        feedbackBadgeHTML = `
-                            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40 text-xs font-bold mb-2">
-                                <i class="fa-solid fa-circle-xmark"></i> Você Errou!
-                            </div>`;
-                    }
+                if (card.isTrue) {
+                    badgeHTML = `
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-bold mb-2">
+                            <i class="fa-solid fa-circle-check text-emerald-600"></i> Tá Certa! (Verdadeiro)
+                        </div>`;
+                    
+                    resultMessageHTML = `
+                        <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3.5 text-xs sm:text-sm text-emerald-950">
+                            <p class="font-bold text-emerald-700 mb-1 flex items-center gap-1.5">
+                                <i class="fa-solid fa-check text-emerald-600"></i> Afirmação Verdadeira!
+                            </p>
+                            <p class="text-slate-700 leading-relaxed">${card.factCorrection}</p>
+                        </div>`;
+                } else {
+                    badgeHTML = `
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-100 text-rose-800 border border-rose-300 text-xs font-bold mb-2">
+                            <i class="fa-solid fa-triangle-exclamation text-rose-600"></i> É Mentira! (Falso)
+                        </div>`;
 
-                    // Answer description formulation based on statement truth
-                    if (card.isTrue) {
-                        resultMessageHTML = `
-                            <div class="bg-emerald-950/60 border border-emerald-500/30 rounded-xl p-3 text-xs sm:text-sm text-emerald-200">
-                                <p class="font-bold text-emerald-300 mb-1">
-                                    <i class="fa-solid fa-check mr-1"></i> A afirmação está CERTA!
-                                </p>
-                                <p class="text-slate-200 leading-relaxed">${card.factCorrection}</p>
-                            </div>`;
-                    } else {
-                        resultMessageHTML = `
-                            <div class="bg-rose-950/60 border border-rose-500/30 rounded-xl p-3 text-xs sm:text-sm text-rose-200">
-                                <p class="font-bold text-rose-300 mb-1">
-                                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> É MENTIRA!
-                                </p>
-                                <p class="text-slate-200 leading-relaxed">${card.factCorrection}</p>
-                            </div>`;
-                    }
+                    resultMessageHTML = `
+                        <div class="bg-rose-50 border border-rose-200 rounded-xl p-3.5 text-xs sm:text-sm text-rose-950">
+                            <p class="font-bold text-rose-700 mb-1 flex items-center gap-1.5">
+                                <i class="fa-solid fa-xmark text-rose-600"></i> É Mentira!
+                            </p>
+                            <p class="text-slate-700 leading-relaxed">${card.factCorrection}</p>
+                        </div>`;
                 }
 
                 const cardEl = document.createElement('div');
-                cardEl.className = 'perspective-1000 h-[380px] w-full';
+                cardEl.className = 'perspective-1000 h-[360px] w-full';
                 cardEl.innerHTML = `
                     <div class="card-inner ${isFlipped ? 'is-flipped' : ''}" id="card-inner-${card.id}">
                         
                         <!-- CARD FRONT (Clickable anywhere) -->
-                        <div onclick="flipCardDirectly(${card.id})" class="card-front bg-slate-900/90 border border-slate-800 hover:border-sky-400 hover:shadow-sky-500/10 transition-all duration-300 shadow-xl p-5 flex flex-col justify-between backdrop-blur">
+                        <div onclick="flipCardDirectly(${card.id})" class="card-front bg-white border border-sky-200 hover:border-sky-400 hover:shadow-lg transition-all duration-300 shadow-md p-5 flex flex-col justify-between">
                             <div>
                                 <!-- Header badge -->
                                 <div class="flex justify-between items-center mb-3">
-                                    <span class="px-2.5 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-300 text-[11px] font-semibold tracking-wide">
+                                    <span class="px-2.5 py-1 rounded-lg bg-sky-100 border border-sky-200 text-sky-800 text-[11px] font-bold tracking-wide">
                                         Card #${index + 1} • ${card.tag}
                                     </span>
-                                    <span class="text-slate-500 text-xs font-mono"><i class="fa-solid fa-hand-pointer mr-1"></i>Clique para virar</span>
                                 </div>
 
                                 <!-- Card Title / Statement -->
-                                <div class="mt-3">
-                                    <h3 class="text-xs uppercase tracking-wider font-extrabold text-slate-400 mb-2">Afirmação:</h3>
-                                    <p class="text-slate-100 text-sm sm:text-base font-medium leading-snug bg-slate-800/50 p-4 rounded-xl border border-slate-700/50 min-h-[120px] flex items-center">
+                                <div class="mt-2">
+                                    <h3 class="text-[11px] uppercase tracking-wider font-extrabold text-slate-400 mb-2">Afirmação:</h3>
+                                    <p class="text-slate-800 text-sm sm:text-base font-medium leading-snug bg-sky-50/70 p-4 rounded-xl border border-sky-100 min-h-[140px] flex items-center">
                                         "${card.statement}"
                                     </p>
                                 </div>
                             </div>
 
-                            <!-- Buttons Front -->
-                            <div>
-                                <p class="text-center text-xs text-slate-400 mb-3 font-semibold">Qual é o seu palpite?</p>
-                                <div class="grid grid-cols-2 gap-3">
-                                    <button onclick="event.stopPropagation(); submitAnswer(${card.id}, true)" class="py-2.5 px-3 bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/40 hover:border-emerald-400 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-1.5 shadow active:scale-95">
-                                        <i class="fa-solid fa-check"></i> Verdadeiro
-                                    </button>
-                                    <button onclick="event.stopPropagation(); submitAnswer(${card.id}, false)" class="py-2.5 px-3 bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/40 hover:border-rose-400 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-1.5 shadow active:scale-95">
-                                        <i class="fa-solid fa-xmark"></i> Falso
-                                    </button>
+                            <!-- Click Hint Footer -->
+                            <div class="mt-auto pt-3">
+                                <div class="w-full py-2.5 px-3 bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 rounded-xl font-bold text-xs transition-all duration-200 flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-rotate"></i> Clique para ver a resposta
                                 </div>
                             </div>
                         </div>
 
                         <!-- CARD BACK (Click anywhere to turn back) -->
-                        <div onclick="resetSingleCard(${card.id})" class="card-back bg-slate-900 border border-slate-700 shadow-2xl p-5 flex flex-col justify-between backdrop-blur">
+                        <div onclick="resetSingleCard(${card.id})" class="card-back bg-white border border-sky-200 shadow-xl p-5 flex flex-col justify-between">
                             <div>
                                 <div class="text-center mb-2">
-                                    ${feedbackBadgeHTML}
+                                    ${badgeHTML}
                                 </div>
 
                                 <div class="mt-1">
@@ -411,8 +386,8 @@
 
                             <!-- Flip back button -->
                             <div class="mt-3">
-                                <button onclick="event.stopPropagation(); resetSingleCard(${card.id})" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold border border-slate-700 transition flex items-center justify-center gap-2">
-                                    <i class="fa-solid fa-arrows-rotate"></i> Tentar Novamente
+                                <button onclick="event.stopPropagation(); resetSingleCard(${card.id})" class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold border border-slate-300 transition flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-rotate-left"></i> Virar de volta
                                 </button>
                             </div>
                         </div>
@@ -425,35 +400,15 @@
             updateScoreboard();
         }
 
-        // Direct flip when clicking anywhere on card front
         function flipCardDirectly(cardId) {
-            const card = flashcardsData.find(c => c.id === cardId);
-            if (!card) return;
-            
-            // If user clicks the card without selecting True/False, reveal fact directly
-            submitAnswer(cardId, card.isTrue);
-        }
+            userAnswers[cardId] = { answered: true };
+            playSound('flip');
 
-        function submitAnswer(cardId, userChoice) {
-            const card = flashcardsData.find(c => c.id === cardId);
-            if (!card) return;
-
-            const isCorrect = (userChoice === card.isTrue);
-            userAnswers[cardId] = {
-                answered: true,
-                userChoice: userChoice,
-                isCorrect: isCorrect
-            };
-
-            playSound(isCorrect ? 'correct' : 'wrong');
-
-            // Trigger card flip
             const cardInner = document.getElementById(`card-inner-${cardId}`);
             if (cardInner) {
                 cardInner.classList.add('is-flipped');
             }
 
-            // Re-render briefly after animation finishes to show correct state styling if needed
             setTimeout(() => {
                 renderCards();
                 checkGameCompletion();
@@ -462,7 +417,7 @@
 
         function resetSingleCard(cardId) {
             delete userAnswers[cardId];
-            playSound('squeak');
+            playSound('flip');
             renderCards();
         }
 
@@ -473,22 +428,8 @@
         }
 
         function updateScoreboard() {
-            const answeredKeys = Object.keys(userAnswers);
-            const totalAnswered = answeredKeys.length;
-            let correctCount = 0;
-            let wrongCount = 0;
-
-            answeredKeys.forEach(key => {
-                if (userAnswers[key].isCorrect) {
-                    correctCount++;
-                } else {
-                    wrongCount++;
-                }
-            });
-
+            const totalAnswered = Object.keys(userAnswers).length;
             document.getElementById('progress-text').innerText = `${totalAnswered} / ${flashcardsData.length}`;
-            document.getElementById('score-correct').innerText = correctCount;
-            document.getElementById('score-wrong').innerText = wrongCount;
 
             const percent = (totalAnswered / flashcardsData.length) * 100;
             document.getElementById('progress-bar').style.width = `${percent}%`;
@@ -497,7 +438,6 @@
         function checkGameCompletion() {
             const totalAnswered = Object.keys(userAnswers).length;
             if (totalAnswered === flashcardsData.length) {
-                // Trigger celebratory confetti
                 try {
                     confetti({
                         particleCount: 100,
@@ -520,7 +460,7 @@
                 flake.style.animationDuration = (Math.random() * 5 + 5) + 's';
                 flake.style.animationDelay = (Math.random() * 5) + 's';
                 flake.style.fontSize = (Math.random() * 10 + 10) + 'px';
-                flake.style.opacity = Math.random() * 0.5 + 0.2;
+                flake.style.opacity = Math.random() * 0.5 + 0.25;
                 container.appendChild(flake);
             }
         }
